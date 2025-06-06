@@ -1,0 +1,72 @@
+{{ define "main" }}
+    {{ $pParts := split (trim .Path "/") "/" }}
+    {{ $nParts := $pParts | len }}
+    {{ $tCount := .Pages | len }}
+
+    {{ if eq $nParts 1 }}
+        <h1>{{ .Title }}</h1>
+    {{ else }}
+        <h1>{{ .Data.Singular }}: <span class="taxonomy-{{ .Data.Singular }}">{{ .Title }}</span></h1>
+        <p>There {{ if gt $tCount 1 }}are  {{ $tCount }} photo{{ else }}is {{ $tCount }} photos{{ end }} with {{ .Data.Singular }} <span class="taxonomy">{{ .Title }}</span></p>
+    {{ end }}
+    {{ $map := .Site.Data.foto.images }}
+    {{ $allKeywords := .Site.Data.foto.keywords }}
+
+    {{ if gt $nParts 1 }}
+    <div id="album">
+        <div class="album-wrapper">
+        {{ range .Pages }}
+            {{ $imageId := first 1 (last 2 (split  .RelPermalink "/")) }}
+            {{ $linkTitle := .LinkTitle }}
+            {{ $imgLink := .RelPermalink }}
+            <div class="term-item">
+                <div>
+                    <a class="title" href="{{ $imgLink }}">
+                        {{ with resources.Get ((index $map $imageId).imagePaths.smallImage) }}
+                        <img src="{{ .RelPermalink }}">
+                        {{ end }}
+                        <span>{{ $linkTitle }}</span></a>
+                    </a>
+                </div>
+            </div>
+        {{ end }}
+        </div>
+    </div>
+    {{ end }}
+
+    {{ .Content }}
+
+
+    {{ if and (eq $nParts 1) (eq .Data.Plural "year") }}
+    <div class="taxonomy-wrapper">
+        <div class="taxonomy-year">
+        {{ range sort .Pages.ByTitle ".LinkTitle" "desc" }}
+        <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+        {{ end }}
+        </div>
+    </div>
+    {{ else if eq .Data.Plural "keywords" }}
+    <div class="taxonomy-wrapper">
+        <ul class="cloud" role="navigation" aria-label="Webdev tag cloud">
+        {{ range .Pages }}
+            {{ $currentKeyword := lower .LinkTitle }}
+            {{ $kwItem := index $allKeywords $currentKeyword }}
+            {{ if gt $kwItem.count 2 }}
+            <li data-show-value="true">
+                <a data-weight="{{ $kwItem.weight }}" data-count="{{ $kwItem.count }}" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+            </li>
+            {{ end }}
+        {{ end }}
+        </ul>
+    </div>
+    {{ else if eq $nParts 1}}
+    <div class="taxonomy-wrapper">
+        <div class="taxonomy-{{ .Data.Singular }}">
+        {{ range .Pages }}
+            <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> </h2>
+        {{ end }}
+        </div>
+    </div>
+    {{ end }}
+
+{{ end }}

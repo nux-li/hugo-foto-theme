@@ -1,0 +1,50 @@
+{{ define "main" }}
+  <h1 class="picture-title">{{ .Title }}</h1>
+<!--  <p class="capture-date"><i data-feather="calendar"></i><span>{{ .Params.captureDate }}</span></p>-->
+
+  <div class="image-page">
+  <div class="image-large">
+    <figure>
+    {{ with resources.Get (.Params.imagePaths.largeImage) }}
+      <img src="{{ .RelPermalink }}">
+    {{ end }}
+      <figcaption>{{.Params.description}}</figcaption>
+    </figure>
+    {{ $credit := print (default .Site.Params.Credit .Params.Credit) }}
+    <p>{{ $credit }} &copy;</p>
+
+    <dl class="info-group">
+      <dt><i data-feather="calendar"></i> Capture date</dt>
+      {{ $yearHref := print (absURL "year/") (urlize .Params.year) }}
+      <dd> <a href="{{ $yearHref }}">{{ .Params.captureDate }}</a></dd>
+      {{ if .Params.exifDetails }}
+      <dt><i data-feather="camera"></i> Exposure details</dt>
+      <dd>
+        {{ $eqHref1 := print (absURL "equipment/") (urlize .Params.exifDetails.cameraMake) }}
+        {{ $eqHref2 := print (absURL "equipment/") (urlize .Params.exifDetails.cameraModel) }}
+        {{ if (or .Params.exifDetails.cameraMake .Params.exifDetails.cameraModel) }}
+        <i data-feather="camera"></i>
+        {{ if $eqHref1 }}<span><a href="{{ $eqHref1 }}">{{.Params.exifDetails.cameraMake}}</a></span>{{ end }}
+        {{ if $eqHref2 }}<span><a href="{{ $eqHref2 }}">{{.Params.exifDetails.cameraModel}}</a></span>{{ end }}
+        {{ end }}
+        {{ if .Params.exifDetails.aperture }}<span><i data-feather="aperture"></i> {{.Params.exifDetails.aperture}}</span>{{ end }}
+        {{ if .Params.exifDetails.focalLength }}<span><img src="/icons/focal-length.svg" height="30px" width="30px"> {{.Params.exifDetails.focalLength}}</span>{{ end }}
+        {{ if .Params.exifDetails.exposureTime }}<span><i data-feather="clock"></i> {{.Params.exifDetails.exposureTime}}</span>{{ end }}
+        {{ if .Params.exifDetails.iso }}<span><img src="/icons/iso.svg" height="30px" width="30px"> {{.Params.exifDetails.iso}}</span>{{ end }}
+      </dd>
+      {{ end }}
+      {{ with .Params.keywords }}
+      <dt><i data-feather="tag"></i> Keywords</dt>
+      <dd>
+      {{ range . }}
+      {{ $href := print (absURL "keywords/") (urlize .) }}
+      <a class="btn btn-sm btn-outline-light tag-btn" href="{{ $href }}">{{ . }}</a>
+      {{ end }}
+      </dd>
+      {{ end }}
+    </dl>
+
+  </div>
+  </div>
+
+{{ end }}

@@ -1,0 +1,55 @@
+{{ define "main" }}
+    {{ $map := .Site.Data.foto.images }}
+    {{ $pageType := .Params.pageType }}
+
+<h1>{{ if eq $pageType "album" }}Album {{ end }}<span>{{ .Title }}</span></h1>
+
+{{ if eq $pageType "album" }}
+<p class="last-updated"><i data-feather="calendar"></i><span>{{ .Params.lastUpdated }}</span></p>
+{{ end }}
+
+{{ if .Params.subAlbums }}
+<div id="sub-albums">
+  <div class="sub-album-wrapper">
+    {{ range .Params.subAlbums }}
+      <div class="sub-album-item">
+        <div>
+            <a class="title" href="{{ .path }}">
+              {{ with resources.Get (.coverImage.thumbnail) }}
+                <img src="{{ .RelPermalink }}">
+              {{ end }}
+                <h2>{{ .title }}</h2><span>({{ .imageCount }} photos)</span>
+            </a>
+        </div>
+      </div>
+    {{end}}
+  </div>
+</div>
+{{ end }}
+
+{{ if gt (.Params.images | len) 0 }}
+<div id="album">
+    <div class="album-wrapper">
+
+        {{ range .Pages }}
+        {{ $imageId := first 1 (last 2 (split  .RelPermalink "/")) }}
+        {{ $linkTitle := .LinkTitle }}
+        {{ $imgLink := .RelPermalink }}
+        <div class="album-item">
+            <div>
+                <a class="title" href="{{ $imgLink }}">
+                    {{ with resources.Get ((index $map $imageId).imagePaths.smallImage) }}
+                    <img src="{{ .RelPermalink }}">
+                    {{ end }}
+                    <span>{{ $linkTitle }}</span></a>
+                </a>
+            </div>
+        </div>
+        {{ end }}
+
+    </div>
+</div>
+{{ end }}
+
+{{ end }}
+

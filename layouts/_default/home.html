@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div id="home-jumbotron" class="jumbotron text-center">
+
+  <div class="frontpage-logo"><a href="/albums"><img src="/images/frontpage_logo.svg" height="200px" width="400px"></a></div>
+  <div class="frontpage-name"><img src="/images/frontpage_name.svg" height="60px" width="200px"></div>
+
+<!--  <h1 class="title">{{ .Site.Title }}</h1>-->
+  {{ range .Params.featured }}
+  <div class="featured">
+
+    {{ with resources.Get (.imagePaths.featuredImage) }}
+    <img src="{{ .RelPermalink }}">
+    {{ end }}
+  </div>
+  {{ end }}
+</div>
+{{ end }}

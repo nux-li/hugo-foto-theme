@@ -1,0 +1,38 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-US'
+title = 'My new Photo gallery'
+[params]
+  credit = '[Your name]]'
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    pre = "home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Albums"
+    pre = "book-open"
+    url = "/albums"
+    weight = 2
+  [[menu.main]]
+    name = "Keywords"
+    pre = "tag"
+    url = "/keywords/"
+    weight = 3
+  [[menu.main]]
+    name = "Equipent"
+    pre = "camera"
+    url = "/equipment/"
+    weight = 4
+  [[menu.main]]
+    name = "Time"
+  pre = "calendar"
+  url = "/year/"
+  weight = 5
+
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = "0.147.7"
