@@ -27,9 +27,16 @@ title = 'My new Photo gallery'
     weight = 4
   [[menu.main]]
     name = "Time"
-  pre = "calendar"
-  url = "/year/"
-  weight = 5
+    pre = "calendar"
+    url = "/year/"
+    weight = 5
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  keyword = "keywords"
+  year = "year"
+  equipment = "equipment"
 
 
 [module]
