@@ -1,7 +1,9 @@
 <!--<h1>{{ site.Title }}</h1>-->
 <!--{{ partial "menu.html" (dict "menuID" "main" "page" .) }}-->
+{{ if ne .IsHome true }}<img class="logo" src="/images/frontpage_logo.svg" height="67px" width="133px" alt="{{ .Title}} logo"/>{{ end }}
 <div id="nav-border" class="container">
     <nav id="nav" class="nav justify-content-center">
+
         {{ range .Site.Menus.main }}
         <a class="nav-link" href="{{ .URL }}">
             {{ if .Pre }}

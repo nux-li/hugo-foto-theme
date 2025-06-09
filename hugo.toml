@@ -2,7 +2,7 @@ baseURL = 'https://example.org/'
 languageCode = 'en-US'
 title = 'My new Photo gallery'
 [params]
-  credit = '[Your name]]'
+  credit = '[Your name]'
 
 [menu]
   [[menu.main]]

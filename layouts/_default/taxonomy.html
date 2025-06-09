@@ -25,7 +25,7 @@
                         {{ with resources.Get ((index $map $imageId).imagePaths.smallImage) }}
                         <img src="{{ .RelPermalink }}">
                         {{ end }}
-                        <span>{{ $linkTitle }}</span></a>
+                        <span>{{ (index $map $imageId).imageTitle }}</span></a>
                     </a>
                 </div>
             </div>

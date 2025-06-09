@@ -2,7 +2,7 @@
     {{ $map := .Site.Data.foto.images }}
     {{ $pageType := .Params.pageType }}
 
-<h1>{{ if eq $pageType "album" }}Album {{ end }}<span>{{ .Title }}</span></h1>
+<h1>{{ if eq $pageType "album" }}Album {{ end }}<span>{{ .Params.albumTitle }}</span></h1>
 
 {{ if eq $pageType "album" }}
 <p class="last-updated"><i data-feather="calendar"></i><span>{{ .Params.lastUpdated }}</span></p>
@@ -18,7 +18,7 @@
               {{ with resources.Get (.coverImage.thumbnail) }}
                 <img src="{{ .RelPermalink }}">
               {{ end }}
-                <h2>{{ .title }}</h2><span>({{ .imageCount }} photos)</span>
+                <h2>{{ .albumTitle }}</h2><span>({{ .imageCount }} photos)</span>
             </a>
         </div>
       </div>
@@ -33,7 +33,6 @@
 
         {{ range .Pages }}
         {{ $imageId := first 1 (last 2 (split  .RelPermalink "/")) }}
-        {{ $linkTitle := .LinkTitle }}
         {{ $imgLink := .RelPermalink }}
         <div class="album-item">
             <div>
@@ -41,7 +40,7 @@
                     {{ with resources.Get ((index $map $imageId).imagePaths.smallImage) }}
                     <img src="{{ .RelPermalink }}">
                     {{ end }}
-                    <span>{{ $linkTitle }}</span></a>
+                    <span>{{ (index $map $imageId).imageTitle }}</span></a>
                 </a>
             </div>
         </div>
