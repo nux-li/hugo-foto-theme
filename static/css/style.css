@@ -14,15 +14,11 @@ body {
 main {
     color: #c4c8cb;
 }
-img.logo {
-    transform: rotate(270deg);
-    position: fixed;
-    top: 140px;
-    left: 0;
-}
+
 div.container {
     margin-top: 0.5em;
 }
+
 hr {
     display: block;
     height: 1px;
