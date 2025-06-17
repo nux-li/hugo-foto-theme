@@ -11,7 +11,7 @@
       <figcaption>{{.Params.description}}</figcaption>
     </figure>
     {{ $credit := print (default .Site.Params.Credit .Params.Credit) }}
-    <p>{{ $credit }} &copy;</p>
+    <p>&copy; {{ replace $credit "&copy;" "" }}</p>
 
     <dl class="info-group">
       <dt><i data-feather="calendar"></i> Capture date</dt>
