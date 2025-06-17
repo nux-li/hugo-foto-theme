@@ -161,6 +161,39 @@ div.image-large a.tag-btn {
     margin-bottom: 2px;
 }
 
+div.image-large figure img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .image-large {
+        padding: 0 1em;
+    }
+
+    .image-large figure img {
+        width: 100vw;
+        max-width: 100vw;
+        height: auto;
+        image-rendering: auto;
+        object-fit: contain;
+    }
+
+    dl.info-group dt,
+    dl.info-group dd {
+        flex-basis: 100%;
+        text-align: left;
+    }
+
+    dl.info-group {
+        flex-direction: column;
+        padding: 0;
+    }
+}
+
 div.image-large figcaption {
     margin-top: 1em;
     margin-bottom: 3em;
