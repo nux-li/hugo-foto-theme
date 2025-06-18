@@ -14,7 +14,7 @@
 {{ end }}
 
 {{ $title := print .Site.Title " | " .Title }}
-{{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
+{{ if .IsHome }}{{ $title = .Site.Params.WebSiteName }}{{ end }}
 <title>{{ $title }}</title>
 <!--{{ partialCached "head/css.html" . }}-->
 <!--{{ partialCached "head/js.html" . }}-->
