@@ -1,16 +1,27 @@
-<div id="nav-border" class="container">
-    <nav id="nav" class="nav justify-content-center">
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="/">MySite</a>
 
-        {{ range .Site.Menus.main }}
-        <a class="nav-link" href="{{ .URL }}">
-            {{ if .Pre }}
-            {{ $icon := printf "<i data-feather=\"%s\"></i> " .Pre | safeHTML }}
-            {{ $icon }}
-            {{ end }}
-            {{ $text := print .Name | safeHTML }}
-            {{ $text }}
-        </a>
-        {{ end }}
-    </nav>
-    <hr/>
-</div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarMain">
+            <ul class="navbar-nav">
+                {{ range .Site.Menus.main }}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ .URL }}">
+                        {{ if .Pre }}
+                        {{ $icon := printf "<i data-feather=\"%s\"></i> " .Pre | safeHTML }}
+                        {{ $icon }}
+                        {{ end }}
+                        {{ $text := print .Name | safeHTML }}
+                        {{ $text }}
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+    </div>
+</nav>
