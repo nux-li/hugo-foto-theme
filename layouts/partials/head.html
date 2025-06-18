@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
 <!--<link rel="stylesheet" type="text/css" href="/css/foto-theme.css">-->
-{{ with resources.Get "css/foto-theme.css" }}
+{{ with resources.Get "/css/foto-theme.css" }}
     {{ if eq hugo.Environment "development" }}
 <link rel="stylesheet" href="{{ .RelPermalink }}">
     {{ else }}
