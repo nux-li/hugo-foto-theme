@@ -3,8 +3,18 @@
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
 <!--<link rel="stylesheet" type="text/css" href="/css/foto-theme.css">-->
+{{ with resources.Get "css/foto-theme.css" }}
+    {{ if eq hugo.Environment "development" }}
+<link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{ else }}
+        {{ with . | fingerprint }}
+<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+        {{ end }}
+    {{ end }}
+{{ end }}
+
 {{ $title := print .Site.Title " | " .Title }}
 {{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
 <title>{{ $title }}</title>
-{{ partialCached "head/css.html" . }}
+<!--{{ partialCached "head/css.html" . }}-->
 <!--{{ partialCached "head/js.html" . }}-->
