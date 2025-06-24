@@ -39,6 +39,7 @@ title = 'My new Photo gallery'
   keyword = "keywords"
   year = "year"
   equipment = "equipment"
+  marketplace = "marketplace"
 
 
 [module]
