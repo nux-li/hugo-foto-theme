@@ -30,8 +30,8 @@
 {{ if gt (.Params.images | len) 0 }}
 <div id="album">
     <div class="album-wrapper">
-
-        {{ range .Pages }}
+    {{ $pages := .Pages.ByParam "captureDateTime"}}
+    {{ range $pages.Reverse }}
         {{ $imageId := first 1 (last 2 (split  .RelPermalink "/")) }}
         {{ $imgLink := .RelPermalink }}
         <div class="album-item">
@@ -44,7 +44,7 @@
                 </a>
             </div>
         </div>
-        {{ end }}
+    {{ end }}
 
     </div>
 </div>
