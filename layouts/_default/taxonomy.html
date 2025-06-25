@@ -7,7 +7,7 @@
         <h1>{{ .Title }}</h1>
     {{ else }}
         <h1>{{ .Data.Singular }}: <span class="taxonomy-{{ .Data.Singular }}">{{ .Title }}</span></h1>
-        <p>There {{ if gt $tCount 1 }}are  {{ $tCount }} photo{{ else }}is {{ $tCount }} photos{{ end }} with {{ .Data.Singular }} <span class="taxonomy">{{ .Title }}</span></p>
+        <p>There {{ if gt $tCount 1 }}are  {{ $tCount }} photo{{ else }}is {{ $tCount }} photos{{ end }} tagged with {{ .Data.Singular }} <span class="taxonomy">{{ .Title }}</span></p>
     {{ end }}
     {{ $map := .Site.Data.foto.images }}
     {{ $allKeywords := .Site.Data.foto.keywords }}
