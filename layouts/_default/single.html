@@ -12,6 +12,7 @@
     </figure>
     {{ $credit := print (default .Site.Params.Credit .Params.Credit) }}
     <p>&copy; {{ replace $credit "©" "" }}</p>
+    {{ if gt (.Params.marketplace | len) 0 }}{{ $stockUrl := index .Params.extra "stock-url" }}<p><a href="{{ $stockUrl }}" rel="nofollow"><i data-feather="shopping-cart"></i> Available as stock photo</a> </p>{{ end }}
 
     <dl class="info-group">
       <dt><i data-feather="calendar"></i> Capture date</dt>
