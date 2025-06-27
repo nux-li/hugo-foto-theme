@@ -53,7 +53,7 @@
                 {{ $currentKeyword := lower .LinkTitle }}
                 {{ $kwItem := dict }}
                 {{ range $i, $item := $allKeywords }}
-                    {{ if eq $item.keyword $currentKeyword }}
+                    {{ if eq (lower $item.keyword) $currentKeyword }}
                         {{ $kwItem = $item }}
                      {{ end }}
                 {{ end }}
