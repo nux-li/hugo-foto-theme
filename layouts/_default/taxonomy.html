@@ -49,7 +49,7 @@
     <div class="taxonomy-wrapper">
         <ul class="cloud" role="navigation" aria-label="Webdev tag cloud">
         {{ range .Pages }}
-            {{ $currentKeyword := lower (print "" .LinkTitle) }}
+            {{ $currentKeyword := lower .LinkTitle }}
             {{ if gt $allKeywords 0 }}
             {{ $kwItem := index $allKeywords (printf "%s" $currentKeyword) }}
             {{ if gt $kwItem.count 2 }}
