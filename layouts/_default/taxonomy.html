@@ -50,13 +50,13 @@
         <ul class="cloud" role="navigation" aria-label="Webdev tag cloud">
         {{ range .Pages }}
             {{ $currentKeyword := lower .LinkTitle }}
-            {{ if gt $allKeywords 0 }}
-            {{ $kwItem := index $allKeywords (printf "%s" $currentKeyword) }}
-            {{ if gt $kwItem.count 2 }}
+            {{ if (and (gt ($currentKeyword | len) 0) (gt $allKeywords 0) }}
+                {{ $kwItem := index $allKeywords (printf "%s" $currentKeyword) }}
+                {{ if gt $kwItem.count 2 }}
             <li data-show-value="true">
                 <a data-weight="{{ $kwItem.weight }}" data-count="{{ $kwItem.count }}" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
             </li>
-            {{ end }}
+                {{ end }}
             {{ end }}
         {{ end }}
         </ul>
