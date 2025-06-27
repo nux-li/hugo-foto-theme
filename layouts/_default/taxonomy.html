@@ -51,7 +51,7 @@
         {{ range .Pages }}
             {{ $currentKeyword := lower (print "" .LinkTitle) }}
             {{ if gt $allKeywords 0 }}
-            {{ $kwItem := index $allKeywords $currentKeyword }}
+            {{ $kwItem := index $allKeywords (print "" $currentKeyword) }}
             {{ if gt $kwItem.count 2 }}
             <li data-show-value="true">
                 <a data-weight="{{ $kwItem.weight }}" data-count="{{ $kwItem.count }}" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
