@@ -48,8 +48,23 @@
     {{ else if eq .Data.Plural "keywords" }}
     <div class="taxonomy-wrapper">
         <ul class="cloud" role="navigation" aria-label="Webdev tag cloud">
-            <li>{{ printf "%#v" $allKeywords }}</li>
+        {{ if (gt $allKeywords 0) }}
+            {{ range .Pages }}
+                {{ $currentKeyword := lower .LinkTitle }}
+                {{ $kwItem := dict }}
+                {{ range $i, $item := $allKeywords }}
+                    {{ if eq $item.keyword $currentKeyword }}
+                        {{ $kwItem = $item }}
+                     {{ end }}
+                {{ end }}
 
+                {{ if gt $kwItem.count 2 }}
+                <li data-show-value="true">
+                    <a data-weight="{{ $kwItem.weight }}" data-count="{{ $kwItem.count }}" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                </li>
+                {{ end }}
+            {{ end }}
+        {{ end }}
         </ul>
     </div>
     {{ else if eq $nParts 1}}
