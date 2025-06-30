@@ -136,6 +136,10 @@ div.album-item a:hover span, div.term-item a:hover span {
     display: block
 }
 
+h1 {
+    margin-top: 1em;
+}
+
 h1.picture-title::before, span.taxonomy-keyword::before {
     content: "“";
 }
@@ -302,3 +306,9 @@ footer {
 .navbar-dark-custom .nav-link i {
     stroke: #c4c8cb;
 }
+
+#breadcrumbs, #breadcrumbs a {color: #6c757d; text-decoration: none;}
+#breadcrumbs {position: relative; z-index: 2; margin: 0;}
+#breadcrumbs li {list-style: none; display: inline;}
+#breadcrumbs li::before {content: "/"; display: inline-block; margin: 0 0.25rem;}
+#breadcrumbs li:first-child:before {content: none;}
