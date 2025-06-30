@@ -3,7 +3,6 @@
 <!--  <p class="capture-date"><i data-feather="calendar"></i><span>{{ .Params.captureDate }}</span></p>-->
 
   <div class="image-page">
-    {{ partial "breadcrumbs.html" . }}
     <div class="image-large">
     <figure>
     {{ with resources.Get (.Params.imagePaths.largeImage) }}
