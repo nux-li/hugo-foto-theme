@@ -352,3 +352,9 @@ div.pn-nav-wrapper {
     height: 50px;
     width: 50px;
 }
+
+@media (hover: none) {
+    .pn-link {
+        opacity: 0;
+    }
+}
