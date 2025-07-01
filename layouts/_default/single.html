@@ -4,12 +4,22 @@
 
   <div class="image-page">
     <div class="image-large">
-    <figure>
-    {{ with resources.Get (.Params.imagePaths.largeImage) }}
-      <img src="{{ .RelPermalink }}">
-    {{ end }}
-      <figcaption>{{.Params.description}}</figcaption>
-    </figure>
+      <figure>
+        {{ $pages := .CurrentSection.Pages.ByParam "captureDateTime" }}
+        <div class="pn-nav-wrapper">
+          {{ with resources.Get (.Params.imagePaths.largeImage) }}
+          <img src="{{ .RelPermalink }}">
+          {{ end }}
+          {{ with $pages.Prev . }}
+          <a href="{{ .RelPermalink }}" class="pn-link pn-left"><i data-feather="chevron-left"></i></a>
+          {{ end }}
+
+          {{ with $pages.Next . }}
+          <a href="{{ .RelPermalink }}" class="pn-link pn-right"><i data-feather="chevron-right"></i></a>
+          {{ end }}
+        </div>
+        <figcaption>{{.Params.description}}</figcaption>
+      </figure>
     {{ $credit := print (default .Site.Params.Credit .Params.Credit) }}
     <p>&copy; {{ replace $credit "©" "" }}</p>
     {{ if gt (.Params.marketplace | len) 0 }}{{ $stockUrl := index .Params.extra "stock-url" }}<p><a href="{{ $stockUrl }}" rel="nofollow"><i data-feather="shopping-cart"></i> Available as stock photo</a> </p>{{ end }}
