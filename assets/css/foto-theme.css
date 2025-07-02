@@ -354,7 +354,7 @@ div.pn-nav-wrapper {
 }
 
 @media (hover: none) {
-    .pn-link {
+    .pn-nav-wrapper:hover, .pn-link, .pn-link svg {
         opacity: 0;
     }
 }
