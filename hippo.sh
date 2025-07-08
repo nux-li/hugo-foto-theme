@@ -1,2 +1,2 @@
 #!/bin/bash
-exec java -jar hippo-1.0-SNAPSHOT-all.jar "$@"
+exec java -jar hippo-1.0.0-all.jar "$@"

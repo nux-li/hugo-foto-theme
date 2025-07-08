@@ -10,7 +10,7 @@ Features
 
 ## Prerequisites
 
-This theme uses Hippo for extraction of metadata, resizing of images, and for generating front matters for every image and album. 
+This theme uses [Hippo](https://github.com/nux-li/hippo) for extraction of metadata, resizing of images, and for generating front matters for every image and album. 
 Hippo is written in Kotlin, and you will need Java Runtime Environment (Java version 21 or newer) on your machine in order to run it.
 
 In order to take full advantage of this theme, you should have a selection of photos with metadata attached. 
