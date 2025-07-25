@@ -55,6 +55,8 @@ Also add this to the end of the `hugo.toml` file:
 Replace `** Your name **` with your name.
 
 ## Getting started
+If you are using Windows operating system - replace all usage of `hippo.sh` with `hippo.bat`, 
+but use same options and parameters.
 
 ### Run demo site
 
