@@ -151,3 +151,6 @@ hugo --environment production --cleanDestinationDir
 ## Contributing
 
 If you find a bug feel free to use the [issue tracker](https://github.com/nux-li/hugo-foto-theme/issues) to let me know. 
+
+## Do you like the theme?
+Consider supporting by [purchasing one of my photos](https://c3n.es/marketplace/picfair/). 
