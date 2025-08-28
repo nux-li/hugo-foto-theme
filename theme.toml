@@ -1,32 +1,16 @@
 name = 'Foto'
 license = 'MIT'
-licenselink = 'https://github.com/owner/repo/LICENSE'
-description = 'Theme description'
+licenselink = 'https://github.com/nux-li/hugo-foto-theme/blob/main/LICENSE'
+description = 'A simple theme for photo galleries that uses almost no javascript'
 
-# The home page of the theme, where the source can be found
-homepage = 'https://github.com/owner/repo'
+homepage = 'https://github.com/nux-li/hugo-foto-theme'
+demosite = 'https://c3n.es/'
 
-# If you have a running demo of the theme
-demosite = 'https://owner.github.io/repo'
+tags = ["gallery", "responsive", "minimal", "dark", "exif", "metadata"]
+features = ['albums', 'keywords', 'exposure details', 'metadata extraction']
 
-# Taxonomy terms
-tags = ['blog', 'company']
-features = ['some', 'awesome', 'features']
+min_version = "0.123.0"
 
-# If the theme has multiple authors
-authors = [
-  {name = 'Name of author', homepage = 'Website of author'},
-  {name = 'Name of author', homepage = 'Website of author'}
-]
-
-# If the theme has a single author
 [author]
-  name = 'Your name'
-  homepage = 'Your website'
-
-# If porting an existing theme
-[original]
-  author = 'Name of original author'
-  homepage = 'Website of original author'
-  repo = 'https://github.com/owner/repo'
-
+  name = 'Vegard Sætrenes'
+  homepage = 'https://c3n.es/'
